@@ -23,11 +23,15 @@
         <tr th:each="product: ${products}">
             <td th:text="${product.productName}"></td>
             <td th:text="${product.productQuantity}"></td>
-            <td>
+            <td class="flex justify-center">
                 <form
                     th:action="@{'/product/delete/' + ${product.productId}}"
-                    th:method="get"
-                >
+                    th:method="get">
+                    <button class="btn btn-primary btn-sm" th:type="submit">Delete</button>
+                </form>
+                <form
+                        th:action="@{'/product/edit/' + ${product.productId}}"
+                        th:method="get">
                     <button class="btn btn-primary btn-sm" th:type="submit">Delete</button>
                 </form>
             </td>

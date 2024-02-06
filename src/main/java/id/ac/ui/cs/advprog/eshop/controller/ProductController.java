@@ -16,6 +16,19 @@ public class ProductController {
     @Autowired
     public ProductService service;
 
+    @GetMapping("/edit/{productId}")
+    public String editProductPage(@PathVariable("productId") String productId, Model model) {
+        Product product = service.findById(productId);
+        model.addAttribute("product", product);
+        return "editProduct";
+    }
+
+//    @PostMapping("/edit")
+//    public String editProduct(@PathVariable("productId") String productId, Model model) {
+//        service.create(product);
+//        return "redirect:list";
+//    }
+
     @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();

@@ -31,4 +31,8 @@ public class ProductRepository {
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
+
+    public List<Product> getData() {
+        return this.productData;
+    }
 }
