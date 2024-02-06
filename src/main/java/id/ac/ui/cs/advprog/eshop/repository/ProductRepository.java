@@ -23,6 +23,16 @@ public class ProductRepository {
         return product;
     }
 
+    public Product edit(String productId, Product product) {
+        for (Product chosenProduct: productData) {
+            if (chosenProduct.getProductId().equals(productId)) {
+                chosenProduct = product;
+                return product;
+            }
+        }
+        return null;
+    }
+
     public int delete(String productId) {
         productData.remove(findById(productId));
         return 0;
