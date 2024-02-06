@@ -103,6 +103,20 @@ public class ProductRepositoryTest {
     }
 
     @Test
+    void testDeleteProduct2() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-ab4g578ashf");
+        product.setProductName("Scarletra");
+        product.setProductQuantity(1000);
+        productRepository.create(product);
+
+        productRepository.delete("eb558e9f-1c39-460e-8860-ab4g578ashf");
+
+        Product retrievedProduct = productRepository.findById("eb558e9f-1c39-460e-8860-ab4g578ashf");
+        assertNull(retrievedProduct);
+    }
+
+    @Test
     void testEditProductNonExistent() {
         Product updatedProduct = new Product();
         updatedProduct.setProductId("nonexistent-id");
