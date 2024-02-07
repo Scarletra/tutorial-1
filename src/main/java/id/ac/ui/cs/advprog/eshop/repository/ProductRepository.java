@@ -23,15 +23,20 @@ public class ProductRepository {
         return product;
     }
 
-    public Product edit(String productId, Product product) {
-        for (Product chosenProduct: productData) {
-            if (chosenProduct.getProductId().equals(productId)) {
+    public Product edit(Product product) {
+        for (Product chosenProduct : productData) {
+            if (product.getProductId().equals(chosenProduct.getProductId())) {
+                if (product.getProductQuantity() < 0) {
+                    chosenProduct.setProductQuantity(0);
+                }
+
                 chosenProduct.setProductName(product.getProductName());
                 chosenProduct.setProductQuantity(product.getProductQuantity());
-                return product;
+                return chosenProduct;
             }
         }
-        return null;
+        return product;
+
     }
 
     public int delete(String productId) {
