@@ -26,8 +26,7 @@
             <td>
                 <form
                     th:action="@{'/product/delete/' + ${product.productId}}"
-                    th:method="get"
-                >
+                    th:method="delete">
                     <button class="btn btn-primary btn-sm" th:type="submit">Delete</button>
                 </form>
             </td>
