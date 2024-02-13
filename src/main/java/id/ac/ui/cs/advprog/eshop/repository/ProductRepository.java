@@ -17,9 +17,8 @@ public class ProductRepository {
             Product dataProduct = productIterator.next();
             if (dataProduct.getProductId().equals(productId)) {
                 return dataProduct;
-            } else {
-                continue;
-            }}
+            }
+        }
         return null;
     }
 
