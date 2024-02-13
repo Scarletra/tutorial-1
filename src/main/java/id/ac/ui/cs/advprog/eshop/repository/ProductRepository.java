@@ -32,7 +32,7 @@ public class ProductRepository {
                 product.setProductQuantity(updateProduct.getProductQuantity());
             }
         }
-        return updateProduct;
+        return null;
     }
 
     public int delete(String productId) {
