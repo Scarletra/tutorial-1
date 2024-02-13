@@ -91,6 +91,5 @@ sonar {
         property("sonar.projectKey", "Scarletra_tutorial-1")
         property("sonar.organization", "tutorial-1")
         property("sonar.host.url", "https://sonarcloud.io")
-        property ("sonar.login", System.getenv("e581475825956a330426b6080be2a49ae434293d"))
     }
 }

@@ -15,10 +15,10 @@ public class ProductRepository {
         Iterator<Product> productIterator = this.findAll();
         while (productIterator.hasNext()) {
             Product dataProduct = productIterator.next();
-            if (dataProduct.getProductId().equals(productId)) {
-                return dataProduct;
-            } else {
+            if (!dataProduct.getProductId().equals(productId)) {
                 continue;
+            } else {
+                return dataProduct;
             }}
         return null;
     }
