@@ -12,9 +12,14 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
     public Product findById(String productId) {
-        for (Product product: productData) {
-            if (product.getProductId().equals(productId)) return product;
-        }
+        Iterator<Product> productIterator = this.findAll();
+        while (productIterator.hasNext()) {
+            Product dataProduct = productIterator.next();
+            if (dataProduct.getProductId().equals(productId)) {
+                return dataProduct;
+            } else {
+                continue;
+            }}
         return null;
     }
 
@@ -24,19 +29,10 @@ public class ProductRepository {
     }
 
     public Product edit(Product product) {
-        for (Product chosenProduct : productData) {
-            if (product.getProductId().equals(chosenProduct.getProductId())) {
-                if (product.getProductQuantity() < 0) {
-                    chosenProduct.setProductQuantity(0);
-                }
-
-                chosenProduct.setProductName(product.getProductName());
-                chosenProduct.setProductQuantity(product.getProductQuantity());
-                return chosenProduct;
-            }
-        }
-        return product;
-
+        Product chosenProduct = findById(product.getProductId());
+        chosenProduct.setProductName(product.getProductName());
+        chosenProduct.setProductQuantity(product.getProductQuantity());
+        return chosenProduct;
     }
 
     public int delete(String productId) {
@@ -46,9 +42,5 @@ public class ProductRepository {
 
     public Iterator<Product> findAll() {
         return productData.iterator();
-    }
-
-    public List<Product> getData() {
-        return this.productData;
     }
 }
