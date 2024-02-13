@@ -26,7 +26,7 @@ public class ProductController {
     @PutMapping("/edit")
     public String editProductPut(@ModelAttribute Product product) {
         service.edit(product);
-        return "redirect:list";
+        return "redirect:./list";
     }
 
     @GetMapping("/create")
