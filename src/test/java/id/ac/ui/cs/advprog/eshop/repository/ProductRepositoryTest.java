@@ -80,7 +80,7 @@ public class ProductRepositoryTest {
         updatedProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         updatedProduct.setProductName("Sampo Cap Bambang Baru");
         updatedProduct.setProductQuantity(150);
-        productRepository.edit("eb558e9f-1c39-460e-8860-71af6af63bd6", updatedProduct);
+        productRepository.edit(updatedProduct);
 
         Product retrievedProduct = productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6");
         assertNotNull(retrievedProduct);
@@ -123,7 +123,7 @@ public class ProductRepositoryTest {
         updatedProduct.setProductName("Sampo Cap Bambang Baru");
         updatedProduct.setProductQuantity(150);
 
-        assertDoesNotThrow(() -> productRepository.edit("nonexistent-id", updatedProduct));
+        assertDoesNotThrow(() -> productRepository.edit(updatedProduct));
     }
 
     @Test
