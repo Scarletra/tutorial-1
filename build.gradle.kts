@@ -75,3 +75,15 @@ tasks.test {
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
 }
+
+plugins {
+    id("org.sonarqube") version "4.4.1.3373"
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "Scarletra_tutorial-1")
+        property("sonar.organization", "tutorial-1")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
+}
