@@ -93,33 +93,33 @@ public class ProductServiceImplTest {
     }
 
 
-//    @Test
-//    void testEditProduct() {
-//        Product product = new Product();
-//        product.setProductId("6f1238f8-d13a-4e5b-936f-e55156158104");
-//        product.setProductName("Sampo Cap Bambang");
-//        product.setProductQuantity(100);
-//
-//        when(productRepository.edit(product)).thenReturn(product);
-//
-//        Product editedProduct = productServiceImpl.edit(product);
-//
-//        assertEquals(product, editedProduct);
-//        verify(productRepository, times(1)).edit(product);
-//    }
-//
-//    @Test
-//    void testDeleteProduct() {
-//        Product product = new Product();
-//        product.setProductId("6f1238f8-d13a-4e5b-936f-e55156158104");
-//        product.setProductName("Sampo Cap Bambang");
-//        product.setProductQuantity(100);
-//
-//        when(productRepository.delete(product.getProductId())).thenReturn(0);
-//
-//        productServiceImpl.delete(product.getProductId());
-//
-//        assertNull(productRepository.findById(product.getProductId()));
-//        verify(productRepository, times(1)).delete(product.getProductId());
-//    }
+    @Test
+    void testEditProduct() {
+        Product product = new Product();
+        product.setProductId("6f1238f8-d13a-4e5b-936f-e55156158104");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+
+        when(productRepository.edit(product)).thenReturn(product);
+
+        Product editedProduct = productServiceImpl.edit(product);
+
+        assertEquals(product, editedProduct);
+        verify(productRepository, times(1)).edit(product);
+    }
+
+    @Test
+    void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductId("6f1238f8-d13a-4e5b-936f-e55156158104");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+
+        when(productRepository.delete(product.getProductId())).thenReturn(0);
+
+        productServiceImpl.delete(product.getProductId());
+
+        assertNull(productRepository.findById(product.getProductId()));
+        verify(productRepository, times(1)).delete(product.getProductId());
+    }
 }
