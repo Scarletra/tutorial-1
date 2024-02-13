@@ -16,9 +16,7 @@ public class ProductRepository {
         while (productIterator.hasNext()) {
             Product dataProduct = productIterator.next();
             if (dataProduct.getProductId().equals(productId)) {
-                return dataProduct;
-            }
-        }
+                return dataProduct;}}
         return null;
     }
 
