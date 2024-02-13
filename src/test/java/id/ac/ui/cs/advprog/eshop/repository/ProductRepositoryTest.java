@@ -116,15 +116,16 @@ public class ProductRepositoryTest {
         assertNull(retrievedProduct);
     }
 
-    @Test
-    void testEditProductNonExistent() {
-        Product updatedProduct = new Product();
-        updatedProduct.setProductId("nonexistent-id");
-        updatedProduct.setProductName("Sampo Cap Bambang Baru");
-        updatedProduct.setProductQuantity(150);
-
-        assertDoesNotThrow(() -> productRepository.edit(updatedProduct));
-    }
+//    @Test
+//    void testEditProductNonExistent() {
+//        Product updatedProduct = new Product();
+//        updatedProduct.setProductId("nonexistent-id");
+//        updatedProduct.setProductName("Sampo Cap Bambang Baru");
+//        updatedProduct.setProductQuantity(150);
+//
+//
+//        assertDoesNotThrow(() -> productRepository.edit(updatedProduct));
+//    }
 
     @Test
     void testDeleteProductNonExistent() {

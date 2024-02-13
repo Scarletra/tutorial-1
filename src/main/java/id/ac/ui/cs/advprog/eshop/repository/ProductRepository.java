@@ -28,15 +28,11 @@ public class ProductRepository {
     }
 
     public Product edit(Product product) {
-        String productId = product.getProductId();
-        int productQuantity = product.getProductQuantity();
-
-        if (productQuantity <= 0) product.setProductQuantity(0);
-
-        Product productInRepository = this.findById(productId);
-        int indexProduct = productData.indexOf(productInRepository);
-        productData.set(indexProduct, product);
-        return product;
+        Product chosenProduct = findById(product.getProductId());
+        chosenProduct.setProductName(product.getProductName());
+        chosenProduct.setProductQuantity(product.getProductQuantity());
+        if (chosenProduct.getProductQuantity() <= 0) chosenProduct.setProductQuantity(0);
+        return chosenProduct;
     }
 
     public int delete(String productId) {
