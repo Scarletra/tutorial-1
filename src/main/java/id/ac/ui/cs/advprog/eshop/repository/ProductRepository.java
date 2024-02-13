@@ -17,8 +17,9 @@ public class ProductRepository {
             Product dataProduct = productIterator.next();
             if (dataProduct.getProductId().equals(productId)) {
                 return dataProduct;
-            }
-        }
+            } else {
+                continue;
+            }}
         return null;
     }
 
@@ -31,7 +32,6 @@ public class ProductRepository {
         Product chosenProduct = findById(product.getProductId());
         chosenProduct.setProductName(product.getProductName());
         chosenProduct.setProductQuantity(product.getProductQuantity());
-        if (chosenProduct.getProductQuantity() <= 0) chosenProduct.setProductQuantity(0);
         return chosenProduct;
     }
 
