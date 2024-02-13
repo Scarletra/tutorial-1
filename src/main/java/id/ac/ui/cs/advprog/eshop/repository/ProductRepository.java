@@ -12,15 +12,12 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
     public Product findById(String productId) {
-        Iterator<Product> productIterator = this.findAll();
-        while (productIterator.hasNext()) {
-            Product dataProduct = productIterator.next();
-            if (!dataProduct.getProductId().equals(productId)) {
-                continue;
-            } else {
-                return dataProduct;
-            }}
-        return null;
+        Product product = null;
+        for (int i = 0; i < productData.size(); i++) {
+            if (productData.get(i).getProductId().equals(productId))
+                product = productData.get(i);
+        }
+        return product;
     }
 
     public Product create(Product product) {
