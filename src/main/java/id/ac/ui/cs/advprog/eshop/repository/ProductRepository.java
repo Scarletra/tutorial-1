@@ -27,8 +27,7 @@ public class ProductRepository {
             if (product.getProductId().equals(chosenProduct.getProductId())) {
                 chosenProduct.setProductName(product.getProductName());
                 chosenProduct.setProductQuantity(product.getProductQuantity());
-                return chosenProduct;
-            }}
+                return chosenProduct;}}
         return product;
     }
 
