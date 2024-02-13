@@ -28,9 +28,6 @@ public class ProductRepository {
     public Product edit(Product updateProduct) {
         for (Product product : productData) {
             if (product.getProductId().equals(updateProduct.getProductId())) {
-                if (updateProduct.getProductQuantity() < 0)
-                    updateProduct.setProductQuantity(0);
-
                 product.setProductName(updateProduct.getProductName());
                 product.setProductQuantity(updateProduct.getProductQuantity());
             }
