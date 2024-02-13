@@ -25,11 +25,17 @@ public class ProductRepository {
         return product;
     }
 
-    public Product edit(Product product) {
-        Product chosenProduct = findById(product.getProductId());
-        chosenProduct.setProductName(product.getProductName());
-        chosenProduct.setProductQuantity(product.getProductQuantity());
-        return chosenProduct;
+    public Product edit(Product updateProduct) {
+        for (Product product : productData) {
+            if (product.getProductId().equals(updateProduct.getProductId())) {
+                if (updateProduct.getProductQuantity() < 0)
+                    updateProduct.setProductQuantity(0);
+
+                product.setProductName(updateProduct.getProductName());
+                product.setProductQuantity(updateProduct.getProductQuantity());
+            }
+        }
+        return updateProduct;
     }
 
     public int delete(String productId) {
