@@ -220,4 +220,18 @@ class ProductRepositoryTest {
         assertEquals(110, editedProduct.getProductQuantity());
     }
 
+    @Test
+    void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        productRepository.delete("eb558e9f-1c39-460e-8860-71af6af63bd6");
+
+        Product retrievedProduct = productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertNull(retrievedProduct);
+    }
+
 }
