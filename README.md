@@ -1,3 +1,10 @@
+
+
+https://scarleshop-tutorial.koyeb.app/
+<img width="615" alt="image" src="https://github.com/Scarletra/tutorial-1/assets/112821721/0b4b1522-4cbe-4714-b430-f9b03565b06e">
+
+
+
 # tutorial-1
 
 Nama : Fernando Valentino Sitinjak </br>
