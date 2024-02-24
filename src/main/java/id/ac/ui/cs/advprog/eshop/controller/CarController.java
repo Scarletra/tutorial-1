@@ -12,23 +12,25 @@ import java.util.List;
 @Controller
 @RequestMapping("/car")
 public class CarController {
-    @Autowired
-    private CarService carService;
+    private final CarService carService;
 
-    @GetMapping("/createcar")
+    @Autowired
+    public CarController(CarService carService) { this.carService = carService; }
+
+    @GetMapping("/create")
     public String createCarPage(Model model) {
         Car car = new Car();
         model.addAttribute("car", car);
         return "createCar";
     }
 
-    @PostMapping("/createcar")
+    @PostMapping("/create")
     public String createCarPost(@ModelAttribute Car car, Model model) {
         carService.create(car);
         return "redirect:listCar";
     }
 
-    @GetMapping("/listcar")
+    @GetMapping("/list")
     public String carListPage(Model model) {
         List<Car> allCars = carService.findAll();
         model.addAttribute("cars", allCars);
@@ -42,7 +44,7 @@ public class CarController {
         return "editCar";
     }
 
-    @PutMapping("/editcar")
+    @PutMapping("/edit")
     public String editCar(@ModelAttribute Car car, Model model) {
         System.out.println(car.getCarId());
         carService.update(car.getCarId(), car);
@@ -50,7 +52,7 @@ public class CarController {
         return "redirect:/listCar";
     }
 
-    @PostMapping("/deletecar")
+    @PostMapping("/delete")
     public String deleteCar(@RequestParam("carId") String carId) {
         carService.deleteCarById(carId);
         return "redirect:listCar";
