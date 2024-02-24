@@ -27,7 +27,7 @@ public class CarController {
     @PostMapping("/create")
     public String createCarPost(@ModelAttribute Car car, Model model) {
         carService.create(car);
-        return "redirect:listCar";
+        return "redirect:list";
     }
 
     @GetMapping("/list")
@@ -49,12 +49,12 @@ public class CarController {
         System.out.println(car.getCarId());
         carService.update(car.getCarId(), car);
 
-        return "redirect:/listCar";
+        return "redirect:/list";
     }
 
     @PostMapping("/delete")
     public String deleteCar(@RequestParam("carId") String carId) {
         carService.deleteCarById(carId);
-        return "redirect:listCar";
+        return "redirect:list";
     }
 }
