@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderTest {
@@ -38,9 +38,9 @@ public class OrderTest {
     @Test
     void testCreateOrderDefaultStatus() {
         Order order = new Order ("13652556-012a-4c07-b546-54eb1396d79b",
-                this.products, 1788568000L, "Safira Sudrajat");
+                this.products, 1708560000L, "Safira Sudrajat");
 
-        assertSame(this. products, order.getProducts());
+        assertSame(this.products, order.getProducts());
         assertEquals(2, order.getProducts().size());
         assertEquals("Sampo Cap Bambang", order.getProducts().get(0).getProductName());
         assertEquals("Sabun Cap Usep", order.getProducts().get(1).getProductName()) ;
@@ -80,10 +80,5 @@ public class OrderTest {
         Order order = new Order ("13652556-012a-4c07-b546-54eb1396d79b",
                 this.products, 1788568000L, "Safira Sudrajat");
         assertThrows(IllegalArgumentException.class, () -> order.setStatus("MEOW"));
-    }
-
-    @Test
-    void testStatusToCancelled() {
-        Order order = new Order()
     }
 }
