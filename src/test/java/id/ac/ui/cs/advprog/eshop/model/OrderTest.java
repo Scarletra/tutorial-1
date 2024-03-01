@@ -53,6 +53,7 @@ public class OrderTest {
         assertEquals(OrderStatus.SUCCESS.getValue(), order.getStatus());
     }
 
+
     @Test
     void testCreateOrderInvalidStatus() {
         assertThrows(IllegalArgumentException.class, () -> {
