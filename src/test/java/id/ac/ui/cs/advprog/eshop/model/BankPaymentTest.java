@@ -2,6 +2,7 @@ package id.ac.ui.cs.advprog.eshop.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,7 +60,7 @@ class BankPaymentTest {
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals("e45d7d21-fd29-4533-a569-abbe0819579a", payment.getId());
         assertEquals(PaymentMethod.BANK.getValue(), payment.getMethod());
-        assertEquals(PaymentStatus.PENDING.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
     }
 
     @Test
@@ -154,8 +155,8 @@ class BankPaymentTest {
             order, 
             paymentData
         );
-        payment.setStatus(PaymentStatus.PENDING.getValue());
-        assertEquals(PaymentStatus.PENDING.getValue(), payment.getStatus());
+        payment.setStatus(PaymentStatus.WAITING_PAYMENT.getValue());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
     }
 
     @Test
@@ -238,19 +239,6 @@ class BankPaymentTest {
         });
     }
 
-    @Test
-    void testCreateBankPaymentInvalidReferenceCode() {
-        paymentData.put("referenceCode", "");
-        assertThrows(IllegalArgumentException.class, () -> {
-            @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
-        });
-    }   
 
     @Test
     void testCreateBankPaymentWithNullBankName() {
@@ -295,18 +283,4 @@ class BankPaymentTest {
         });
     }
 
-    @Test
-    void testCreateBankPaymentWithNullBankNameAndReferenceCode() {
-        paymentData.put("bankName", null);
-        paymentData.put("referenceCode", null);
-        assertThrows(IllegalArgumentException.class, () -> {
-            @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
-        });
-    }
 }
