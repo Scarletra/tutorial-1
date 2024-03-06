@@ -1,14 +1,16 @@
 package id.ac.ui.cs.advprog.eshop.repository;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
 import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.BankPayment;
@@ -16,11 +18,14 @@ import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.model.VoucherPayment;
+
 class PaymentRepositoryTest {
+
     PaymentRepository paymentRepository;
     List<Product> products;
     List<Payment> payments;
     Order order;
+
     @BeforeEach
     void setup() {
         paymentRepository = new PaymentRepository();
@@ -72,6 +77,7 @@ class PaymentRepositoryTest {
         payments.add(voucherPayment);
         payments.add(bankPayment);
     }
+
     @Test
     void testSaveCreate() {
         Payment payment = payments.get(1);
@@ -83,8 +89,9 @@ class PaymentRepositoryTest {
         assertEquals(payment.getOrder(), findResult.getOrder());
         assertSame(payment.getPaymentData(), findResult.getPaymentData());
         assertEquals(payment.getStatus(), findResult.getStatus());
-        assertEquals(PaymentStatus.PENDING.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
     }
+
     @Test
     void testSaveCreateVoucher() {
         Payment payment = payments.get(2);
@@ -96,9 +103,10 @@ class PaymentRepositoryTest {
         assertEquals(payment.getOrder(), findResult.getOrder());
         assertSame(payment.getPaymentData(), findResult.getPaymentData());
         assertEquals(payment.getStatus(), findResult.getStatus());
-        assertEquals(PaymentStatus.PENDING.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
         assertEquals(PaymentMethod.VOUCHER.getValue(), payment.getMethod());
     }
+
     @Test
     void testSaveCreateBank() {
         Payment payment = payments.get(3);
@@ -110,9 +118,10 @@ class PaymentRepositoryTest {
         assertEquals(payment.getOrder(), findResult.getOrder());
         assertSame(payment.getPaymentData(), findResult.getPaymentData());
         assertEquals(payment.getStatus(), findResult.getStatus());
-        assertEquals(PaymentStatus.PENDING.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
         assertEquals(PaymentMethod.BANK.getValue(), payment.getMethod());
     }
+
     @Test
     void testSaveUpdate() {
         Payment payment = payments.get(1);
@@ -143,8 +152,9 @@ class PaymentRepositoryTest {
         assertEquals(result.getPaymentData(), findResult.getPaymentData());
         assertEquals(payment.getStatus(), findResult.getStatus());
         assertEquals(result.getStatus(), findResult.getStatus());
-        assertEquals(PaymentStatus.PENDING.getValue(), findResult.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), findResult.getStatus());
     }
+
     @Test
     void testSaveUpdateVoucher() {
         Payment payment = payments.get(2);
@@ -176,9 +186,10 @@ class PaymentRepositoryTest {
         assertSame(result.getPaymentData(), findResult.getPaymentData());
         assertEquals(payment.getStatus(), findResult.getStatus());
         assertEquals(result.getStatus(), findResult.getStatus());
-        assertEquals(PaymentStatus.PENDING.getValue(), findResult.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), findResult.getStatus());
         assertEquals(PaymentMethod.VOUCHER.getValue(), findResult.getMethod());
     }
+
     @Test
     void testSaveUpdateBank() {
         Payment payment = payments.get(3);
@@ -211,9 +222,10 @@ class PaymentRepositoryTest {
         assertSame(result.getPaymentData(), findResult.getPaymentData());
         assertEquals(payment.getStatus(), findResult.getStatus());
         assertEquals(result.getStatus(), findResult.getStatus());
-        assertEquals(PaymentStatus.PENDING.getValue(), findResult.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), findResult.getStatus());
         assertEquals(PaymentMethod.BANK.getValue(), findResult.getMethod());
     }
+
     @Test
     void testFindByIdIfIdFound() {
         for (Payment payment : payments) {
@@ -226,10 +238,12 @@ class PaymentRepositoryTest {
         assertEquals(payments.get(1).getStatus(), findResult.getStatus());
         assertEquals(payments.get(1).getOrder(), findResult.getOrder());
     }
+
     @Test
     void testFindByIdIfIdNotFound() {
         assertNull(paymentRepository.findById("zczc"));
     }
+    
     @Test
     void testGetAllPayments() {
         for (Payment payment : payments) {
@@ -238,3 +252,5 @@ class PaymentRepositoryTest {
         List<Payment> allPayments = paymentRepository.getAllPayments();
         assertEquals(4, allPayments.size());
     }
+
+}
